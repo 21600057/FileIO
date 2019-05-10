@@ -1,20 +1,26 @@
 package edu.handong.csee.java.example.fileread.benchmark;
 
 import java.io.*;
-
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 /**
  * Created by sherxon on 4/23/17. https://github.com/sherxon/AlgoDS/tree/master/src/oi
  */
-public class UsingBufferedReader {
-    public static void main(String[] args) throws IOException {
+public class UsingBufferedReader
+{
+    public static void main(String[] args) throws IOException
+    {
 
 
         //-------------- Test reading 1 MB file. --------------------
 
         StopWatch.start();
+        BufferedReader inputStream= new BufferedReader(new FileReader(args[0]));
+        
+    	System.out.println ("The file " + args[0] + "\n");
 
-        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
-        while (inputStream.read()!=-1){}
+    	
+    	while (inputStream.read()!=-1){}
 
         long duration = StopWatch.stop();
         System.out.println(duration + " milsec");
@@ -26,7 +32,9 @@ public class UsingBufferedReader {
 
         StopWatch.start();
 
-        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
+        BufferedReader inputStream2= new BufferedReader(new FileReader(args[1]));
+    	System.out.println ("The file " + args[1] + "\n");
+
         while (inputStream2.read()!=-1){}
 
         long duration2 = StopWatch.stop();
